@@ -6,8 +6,9 @@ addTaskButton.addEventListener( 'click', function(){
   let taskText = inputField.value.trim();
 
   if (taskText !== "") {
-    createTask(taskText);
+    let task = createTask(taskText);
     inputField.value = "";
+    appendTask(task);
   }
 })
 
@@ -19,9 +20,8 @@ function createTask (taskText) {
     name: taskText,
     status: defaultStatus,
     priority: defaultPriority };
-    appendTask(newTask);
+
     return newTask;
-    
 }
 
 function appendTask(task) {
