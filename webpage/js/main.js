@@ -19,7 +19,11 @@ function createTask (taskText) {
     name: taskText,
     status: defaultStatus,
     priority: defaultPriority };
-  
+    appendTask(newTask);
     return newTask;
     
+}
+
+function appendTask(task) {
+  document.getElementById('mainBoard').append(task)
 }
