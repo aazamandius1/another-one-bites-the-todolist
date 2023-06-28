@@ -6,9 +6,10 @@ addTaskButton.addEventListener( 'click', function(){
   let taskText = inputField.value.trim();
 
   if (taskText !== "") {
-    let task = createTask(taskText);
+    let taskObject = createTask(taskText);
+    let taskObjectDom =createTaskDom(taskObject);
+    appendTask(taskObjectDom);
     inputField.value = "";
-    appendTask(task);
   }
 })
 
@@ -22,6 +23,18 @@ function createTask (taskText) {
     priority: defaultPriority };
 
     return newTask;
+}
+
+function createTaskDom (taskObject) {
+  let taskItemDom = document.createElement('div');
+  let taskItemText = document.createElement('p')
+  taskItemDom.appendChild(taskItemText);
+
+  taskItemDom.classList.add('taskDiv');
+  taskItemText.classList.add('taskP');
+  taskItemText.innerText = taskObject.name;
+  console.log("it fcucking works");
+  return taskItemDom;
 }
 
 function appendTask(task) {
