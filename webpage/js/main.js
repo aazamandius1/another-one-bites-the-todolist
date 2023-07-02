@@ -29,14 +29,26 @@ function createTaskDom (taskObject) {
   let taskItemDom = document.createElement('div');
   let taskItemText = document.createElement('p')
   taskItemDom.appendChild(taskItemText);
-
+  let taskActionButtons = document.createElement('div');
+  taskItemDom.appendChild(taskActionButtons);
+  let doneButton = createButton('Done', function () {
+    taskItemText.style.textDecoration = 'line-through';
+    taskItemText.style.backgroundColor = 'green';
+  });
+  taskActionButtons.appendChild(doneButton);
   taskItemDom.classList.add('taskDiv');
   taskItemText.classList.add('taskP');
   taskItemText.innerText = taskObject.name;
-  console.log("it fcucking works");
   return taskItemDom;
 }
 
 function appendTask(task) {
   document.getElementById('mainBoard').append(task)
+}
+
+function createButton(text, action) {
+  let button = document.createElement('button');
+  button.innerText = text;
+  button.addEventListener('click', action);
+  return button;
 }
